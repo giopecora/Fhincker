@@ -29,8 +29,10 @@ class LoginController extends Controller{
                                     ->sign($signer, 'yoda') 
                                     ->getToken(); // Retrieves the generated token
             
-            echo $token;
             
+            $_SESSION['token'] = strval($token);
+            $this->redirect('/envioPlanos');
+
         }else{
             var_dump("false");
         }
