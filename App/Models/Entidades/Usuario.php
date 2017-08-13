@@ -6,7 +6,7 @@ class Usuario{
 
     private $id;
     private $nome;
-    private $email;
+    private $senha;
 
     public function getId(){
         return $this->id;    
@@ -23,10 +23,10 @@ class Usuario{
     }
 
     
-    public function getEmail(){
-        return $this->email;    
+    public function getsenha(){
+        return $this->senha;    
     }
-    public function setEmail($email){
-        $this->email;
+    public function setsenha($senha){
+        $this->senha;
     }
 }

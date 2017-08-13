@@ -1,5 +1,5 @@
 <div class="container">
-   <form method="post" action="Login/teste">
+   <form method="post" action="Login/validar">
   <label>Usuário</label>
   <input type="text" name="usuario" maxlength="50" />
   

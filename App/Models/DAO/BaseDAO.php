@@ -10,6 +10,8 @@ abstract class BaseDAO{
         $this->conexao = Conexao::getConnection();
     }
     public function select($sql){
+        $this->conexao = Conexao::getConnection();
+        
         if(!empty($sql)){
             return $this->conexao->query($sql);
         }

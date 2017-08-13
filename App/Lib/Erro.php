@@ -13,12 +13,12 @@ class Erro{
         $this->code = $oException->getCode();
         $this->message = $oException->getMessage();
     }
-    public function reder(){
+    public function render(){
         $varMessage = $this->message;
-        if(file_exists(PATH . "/App/View/error/" . $this->code . ".php")){
-            require_once PATH . "/App/View/error/" . $this->code . ".php";
+        if(file_exists(PATH . "/App/Views/erros/" . $this->code . ".php")){
+            require_once PATH . "/App/Views/erros/" . $this->code . ".php";
         }else{
-            require_once PATH . "/App/View/error/500.php";
+            require_once PATH . "/App/Views/erros/500.php";
         }
         exit;
     }
