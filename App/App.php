@@ -63,14 +63,17 @@ class App{
                                 ->set('uid', 1) // Configures a new claim, called "uid"
                                 ->sign($signer, 'yoda') 
                                 ->getToken(); // Retrieves the generated token
-        if(strval($token)===$_SESSION['token']){
-            echo 'igual';
-        }else{
-            echo 'diferente';
-        }
+        
         
         
         if ($this->controller) {
+            if(strval($token)===$_SESSION['token'] || $this->controller==="Login"){
+                $this->controllerName = ucwords($this->controller) . 'Controller';
+                $this->controllerName = preg_replace('/[^a-zA-Z]/i', '', $this->controllerName);
+            }else{
+                echo 'Você não está autorizado a acessar essa página';
+                exit;   
+            }
             $this->controllerName = ucwords($this->controller) . 'Controller';
             $this->controllerName = preg_replace('/[^a-zA-Z]/i', '', $this->controllerName);
         } else {
@@ -97,6 +100,7 @@ class App{
         }
 
         if (method_exists($objetoController, $this->action)) {
+            
             $objetoController->{$this->action}($this->params);
             return;
         } else if (!$this->action && method_exists($objetoController, 'index')) {
