@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Controllers\LoginController;
+use App\Models\DAO\LoginDAO;
 use Exception;
 use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
@@ -24,7 +25,7 @@ class App{
        define('TITLE'          , "Primeira aplicação MVC em PHP - DevMedia");
        define('DB_HOST'        , "localhost");
        define('DB_USER'        , "root");
-       define('DB_PASSWORD'    , "");
+       define('DB_PASSWORD'    , "root");
        define('DB_NAME'        , "rebeldes");
        define('DB_DRIVER'      , "mysql");
          
@@ -53,21 +54,15 @@ class App{
     }
     
     public function run(){
+        
         $signer = new Sha256();
-        $token = (new Builder())->setIssuer('http://example.com') // Configures the issuer (iss claim)
-                                ->setAudience('http://example.org') // Configures the audience (aud claim)
-                                ->setId('4f1g23a12aa', true) // Configures the id (jti claim), replicating as a header item
-                                ->setIssuedAt(time()) // Configures the time that the token was issue (iat claim)
-                                ->setNotBefore(time() + 60) // Configures the time that the token can be used (nbf claim)
-                                ->setExpiration(time() + 3600) // Configures the expiration time of the token (nbf claim)
-                                ->set('uid', 1) // Configures a new claim, called "uid"
-                                ->sign($signer, 'yoda') 
-                                ->getToken(); // Retrieves the generated token
-        
-        
-        
+        $loginDAO = new LoginDAO();
+        if(isset($_SESSION['id_usuario'])){
+            $token = $loginDAO->getToken($_SESSION['id_usuario']);
+        }
+
         if ($this->controller) {
-            if(strval($token)===$_SESSION['token'] || $this->controller==="Login"){
+            if(strval($token[0])===$_SESSION['token'] || $this->controller==="Login"){
                 $this->controllerName = ucwords($this->controller) . 'Controller';
                 $this->controllerName = preg_replace('/[^a-zA-Z]/i', '', $this->controllerName);
             }else{

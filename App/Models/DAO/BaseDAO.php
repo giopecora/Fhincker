@@ -32,4 +32,9 @@ abstract class BaseDAO{
             return false;
         }
     }
+     public function update($sql){
+            $stmt = $this->conexao->prepare($sql);
+            $stmt->execute();
+            return $stmt->rowCount();
+    }
 }

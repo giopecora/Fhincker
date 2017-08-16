@@ -5,6 +5,7 @@
         }
     },
     "require": {
-        "lcobucci/jwt": "^3.2"
+        "lcobucci/jwt": "^3.2",
+        "jenssegers/mongodb": "^3.2"
     }
 }

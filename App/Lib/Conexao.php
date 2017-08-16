@@ -12,6 +12,7 @@ use Exception;
 
     public static function getConnection() {
         
+        
         $pdoConfig  = DB_DRIVER . ":". "host=" . DB_HOST . ";";
         $pdoConfig .= "dbname=".DB_NAME.";";
 

@@ -5,9 +5,6 @@ use App\Lib\Erro;
 
 session_start();
 
-$m = new MongoDB\Driver\Manager("mongodb://localhost:27017");
-
-
 error_reporting(E_ALL & ~E_NOTICE);
 
 require_once("vendor/autoload.php");

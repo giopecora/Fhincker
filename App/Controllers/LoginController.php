@@ -15,8 +15,11 @@ class LoginController extends Controller{
        // Sessao::gravaFormulario($_POST);
 
         $loginDAO = new LoginDAO();
-        
-        if($loginDAO->autentica($_POST['usuario'], $_POST['senha'])){
+
+        $id = $loginDAO->autentica($_POST['usuario'], $_POST['senha']);
+        $_POST['usuario']=""; 
+        $_POST['senha']="";
+        if($id){
             
             $signer = new Sha256();
             $token = (new Builder())->setIssuer('http://example.com') // Configures the issuer (iss claim)
@@ -30,7 +33,9 @@ class LoginController extends Controller{
                                     ->getToken(); // Retrieves the generated token
             
             
+            $loginDAO->atualizaToken(strval($id[0]),$token);
             $_SESSION['token'] = strval($token);
+            $_SESSION['id_usuario'] = strval($id[0]);
             $this->redirect('/envioPlanos');
 
         }else{
