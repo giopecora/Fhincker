@@ -14,7 +14,29 @@ class EnvioPlanosController extends Controller{
     
     public function importar(){
                 
-        
+        //$this->importarSoldados();
+        $this->importarNaves();
+    }
+     
+     public function importarNaves(){
+        //  $file = file_get_contents($_FILES["arq2"]['tmp_name']);
+        //  $file = utf8_encode($file);
+        //  $file = fopen($name, "r");
+         var_dump($_FILES["arq2"]['name']);exit;
+         $file = fopen($_FILES["arq2"]['name'], "r");
+         $result = array();
+         $i = 0;
+         while (!feof($_FILES["arq2"]['tmp_name'])){
+            if (substr(($result[$i] = fgets($file)), 0, 10) !== ';;;;;;;;'){
+                $i++;
+            }
+         }
+         fclose($file);
+         var_dump($result);
+     
+     }
+     public function importarSoldados(){
+            
         $client = new \MongoDB\Client();
         $collection = $client->soldados;
         $uploaddir =__DIR__.  "\uploads/";
@@ -36,8 +58,7 @@ class EnvioPlanosController extends Controller{
             chdir('c:\wamp64\bin\mongo\MongoDB\Server\3.4\bin');
             shell_exec($command);
         }
-          
-    }
+     }
     
    
 }
