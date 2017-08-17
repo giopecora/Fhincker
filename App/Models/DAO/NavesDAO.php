@@ -3,24 +3,19 @@
 namespace App\Models\DAO;
 
 
-class LoginDAO extends BaseDAO{
-      
-      public  function salvar(Usuario $usuario) {
-        try {
-            $nome      = $usuario->getNome();
-            $email     = $usuario->getEmail();
-            return $this->insert(
-            'usuario',
-            ":nome,:email",
-            [
-            ':nome'=>$nome,
-            ':email'=>$email
-            ]
-        );
 
-        }catch (\Exception $e){
-            throw new \Exception("Erro na gravação de dados.", 500);
+class NavesDAO extends BaseDAO{
+    public function gravar($nave)
+    {
+        try {
+            
+            $query = $this->insert(
+                "INSERT INTO naves (numero_serial_da_nave, tipo_da_nave, comandante_responsavel, localizacao_planeta, localizacao_orla, ship_potential) 
+                 values ('$nave->numero_serial_da_nave' , '$nave->tipo_da_nave' , '$nave->comandante_responsavel' , '$nave->localizacao_planeta',  '$nave->localizacao_orla' ,  '$nave->ship_potential')");
+       }catch (Exception $e){
+            throw new \Exception("Erro no acesso aos dados.", 500);
         }
     }
+  
    
 }

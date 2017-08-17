@@ -16,21 +16,11 @@ abstract class BaseDAO{
             return $this->conexao->query($sql);
         }
     }
-    public function insert($table, $cols, $values){
-        if(!empty($table) && !empty($cols) && !empty($values))
-        {
-            $parametros    = $cols;
-            $colunas       = str_replace(":", "", $cols);
-            /*
-            INSERT INTO usuario (nome,email) VALUES (:nome,:email);
-            */
-            $stmt = $this->conexao->prepare("INSERT INTO $table ($colunas) VALUES ($parametros)");
-            $stmt->execute($values);
-
-            return $stmt->rowCount();
-        }else{
-            return false;
-        }
+    public function insert($sql){
+        $this->conexao = Conexao::getConnection();
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->execute();
+        return $stmt->rowCount();
     }
      public function update($sql){
             $stmt = $this->conexao->prepare($sql);

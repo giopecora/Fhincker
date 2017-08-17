@@ -36,6 +36,7 @@ class LoginController extends Controller{
             $loginDAO->atualizaToken(strval($id[0]),$token);
             $_SESSION['token'] = strval($token);
             $_SESSION['id_usuario'] = strval($id[0]);
+            var_dump("teste");
             $this->redirect('/envioPlanos');
 
         }else{

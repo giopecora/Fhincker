@@ -28,6 +28,7 @@ class App{
        define('DB_PASSWORD'    , "root");
        define('DB_NAME'        , "rebeldes");
        define('DB_DRIVER'      , "mysql");
+       define('MONGO'          , "c:\wamp64\bin\mongo\MongoDB\Server/3.4\bin");
          
        $this->url();
     }
