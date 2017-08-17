@@ -16,12 +16,12 @@ class NaveRebeldeDAO extends BaseDAO{
             throw new \Exception("Erro no acesso aos dados.", 500);
         }
     }
-    public function potencialSemPlano($nome_nave)
+    public function potencial($nome_nave)
     {
         try {
             
             $query = $this->select(
-                "SELECT potencial FROM navesrebeldes WHERE nome_nave = '$nome_nave'"
+                "SELECT potencial, potencial_planos, qtd_naves FROM navesrebeldes WHERE nome_nave = '$nome_nave'"
             );
             return $query->fetch();
 
@@ -29,19 +29,5 @@ class NaveRebeldeDAO extends BaseDAO{
             throw new \Exception("Erro no acesso aos dados.", 500);
         }
     }
-    public function potencialComPlano($nome_nave)
-    {
-        try {
-            
-            $query = $this->select(
-                "SELECT potencial_planos FROM navesrebeldes WHERE nome_nave = '$nome_nave'"
-            );
-            return $query->fetch();
-
-        }catch (Exception $e){
-            throw new \Exception("Erro no acesso aos dados.", 500);
-        }
-    }
-  
    
 }

@@ -22,6 +22,7 @@ class SoldadoDAO extends BaseDAO{
 
        return $count;
     }
+
   
    
 }

@@ -16,6 +16,19 @@ class NaveImperioDAO extends BaseDAO{
             throw new \Exception("Erro no acesso aos dados.", 500);
         }
     }
+    public function potencial($numero_serial_da_nave)
+    {
+        try {
+            
+            $query = $this->select(
+                "SELECT * FROM navesimperio WHERE numero_serial_da_nave = '$numero_serial_da_nave'"
+            );
+            return $query->fetch();
+
+        }catch (Exception $e){
+            throw new \Exception("Erro no acesso aos dados.", 500);
+        }
+    }
   
    
 }
