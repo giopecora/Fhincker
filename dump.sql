@@ -1,7 +1,7 @@
 
 
 
-CREATE TABLE `naves` (
+CREATE TABLE `navesimperio` (
   `numero_serial_da_nave` varchar(100) NOT NULL,
   `tipo_da_nave` varchar(100) NOT NULL,
   `comandante_responsavel` varchar(100) NOT NULL,
@@ -22,3 +22,6 @@ CREATE TABLE `usuario` (
 -
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`);
+
+
+CREATE TABLE `rebeldes`.`navesrebeldes` ( `id_nave` INT NOT NULL AUTO_INCREMENT , `nome_nave` VARCHAR(100) NOT NULL , `qtd_naves` INT NOT NULL , `potencial` FLOAT NOT NULL , `potencial_planos` FLOAT NOT NULL , PRIMARY KEY (`id_nave`)) ENGINE = InnoDB;

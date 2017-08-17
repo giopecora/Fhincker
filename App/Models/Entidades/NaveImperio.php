@@ -2,7 +2,7 @@
 
 namespace App\Models\Entidades;
 
-class Naves{
+class NaveImperio{
 
     public $numero_serial_da_nave;
     public $tipo_da_nave;
