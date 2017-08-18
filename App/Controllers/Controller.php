@@ -2,7 +2,7 @@
 
  namespace App\Controllers;
 
- use App\Lib\Sessao;
+ 
  
  abstract class Controller {
     protected $app;
@@ -15,7 +15,7 @@
     public function render($view)
     {
         $viewVar = $this->getViewVar();
-        $Sessao  = Sessao::class;
+        
 
         require_once PATH . '/App/Views/layouts/header.php';
         

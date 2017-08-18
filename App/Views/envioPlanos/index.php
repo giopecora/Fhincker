@@ -10,7 +10,7 @@
           <label for="arquivo2">Arquivo das Naves</label>
           <input type="file" class="form-control-file" id="arq2" name="arq2" required aria-describedby="fileHelp">
           <br>
-          <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Enviar</button>
+          <button class="btn btn-lg btn-warning btn-block btn-signin" type="submit">Enviar</button>
         </form>
       </section>  
     </div>

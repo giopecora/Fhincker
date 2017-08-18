@@ -15,7 +15,7 @@
           <div class="pwstrength_viewport_progress"></div>
           
           
-          <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Entrar</button>
+          <button class="btn btn-lg btn-warning btn-block btn-signin" type="submit">Entrar</button>
           
         </form>
       </section>  

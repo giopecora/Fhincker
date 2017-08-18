@@ -9,7 +9,8 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="error">SENHA INCORRETA</h1>
+        <h1 class="error">500</h1>
+        <h1 class="error"><?php echo $this->message?></h1>
     </div>
 </body>
 </html>

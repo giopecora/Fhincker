@@ -17,9 +17,13 @@ class EnvioPlanosController extends Controller{
     }
     
     public function importar(){
+
         $this->importarSoldados();
         $this->importarNavesImperio();
         $this->gravarDadosRebeldes();
+
+        
+            
         $this->redirect('/dadosPlanos');
     }
 
@@ -75,9 +79,6 @@ class EnvioPlanosController extends Controller{
             $command = "mongoimport --db imperio --collection " . $collection . " --file " . $uploadfile ." --type csv --headerline" ;
             chdir(MONGO);
             shell_exec($command);   
-
-            
-            $pasta = "\uploads/";
             $pasta = PATH . "/App/Controllers/uploads/";
             
             if(is_dir($pasta)){

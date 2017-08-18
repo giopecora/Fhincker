@@ -1,5 +1,5 @@
-
-
+CREATE DATABASE rebeldes;
+use rebeldes;
 
 CREATE TABLE `navesimperio` (
   `numero_serial_da_nave` varchar(100) NOT NULL,
@@ -11,6 +11,13 @@ CREATE TABLE `navesimperio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+CREATE TABLE `navesrebeldes` (
+  `id_nave` int(11) NOT NULL,
+  `nome_nave` varchar(100) NOT NULL,
+  `qtd_naves` int(11) NOT NULL,
+  `potencial` float NOT NULL,
+  `potencial_planos` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `usuario` (
@@ -19,9 +26,23 @@ CREATE TABLE `usuario` (
   `senha` varchar(100) NOT NULL,
   `token` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
--
+
+
+INSERT INTO `usuario` (`id_usuario`, `login`, `senha`) VALUES
+(1, 'sabre', 'luz');
+
+
+ALTER TABLE `navesrebeldes`
+  ADD PRIMARY KEY (`id_nave`);
+
+
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`);
 
 
-CREATE TABLE `rebeldes`.`navesrebeldes` ( `id_nave` INT NOT NULL AUTO_INCREMENT , `nome_nave` VARCHAR(100) NOT NULL , `qtd_naves` INT NOT NULL , `potencial` FLOAT NOT NULL , `potencial_planos` FLOAT NOT NULL , PRIMARY KEY (`id_nave`)) ENGINE = InnoDB;
+ALTER TABLE `navesrebeldes`
+  MODIFY `id_nave` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+ALTER TABLE `usuario`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+

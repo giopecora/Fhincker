@@ -13,6 +13,10 @@ try {
     $app = new App();
     $app->run();
  }catch (\Exception $e){
+    if(isset($e->xdebug_message)){
+        echo $e->xdebug_message;
+        exit;
+    }
     $oError = new Erro($e);
     $oError->render();
 }    

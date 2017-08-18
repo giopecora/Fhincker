@@ -13,8 +13,7 @@ class LoginController extends Controller{
         $this->render('login/index');
     }
     public function validar(){
-       // Sessao::gravaFormulario($_POST);
-       $_SESSION['mensagemLogin']="";
+        $_SESSION['mensagemLogin']="";
         $loginDAO = new LoginDAO();
 
         $id = $loginDAO->autentica($_POST['usuario'], $_POST['senha']);
@@ -44,17 +43,6 @@ class LoginController extends Controller{
             $_SESSION['mensagemLogin'] = "Login e\ou Senha incorreta";
             $this->redirect('/Login');
         }
-
-        /*if($usuarioDAO->verificaEmail($_POST['email'])){
-            Sessao::gravaMensagem("Email existente");
-            $this->redirect('/usuario/cadastro');
-        }
-
-        if($usuarioDAO->salvar($Usuario)){
-            $this->redirect('/usuario/sucesso');
-        }else{
-            Sessao::gravaMensagem("Erro ao gravar");
-        }*/
     }
 
    
