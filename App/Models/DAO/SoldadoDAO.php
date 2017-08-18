@@ -22,11 +22,8 @@ class SoldadoDAO extends BaseDAO{
 
        return $count;
     }
-    public function testeConexao(){
-
-       return $this->client;
+    public function drop(){
+        $this->client->imperio->command(array("dropDatabase" => 1));
     }
-
-  
-   
+     
 }

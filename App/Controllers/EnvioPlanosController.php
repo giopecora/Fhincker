@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 use Lcobucci\JWT\Builder;
-use App\Lib\AES;
 use App\Models\DAO\NaveImperioDAO;
 use App\Models\Entidades\NaveImperio;
 use App\Models\DAO\SoldadoDAO;
@@ -17,7 +16,6 @@ class EnvioPlanosController extends Controller{
     }
     
     public function importar(){
-
         $this->importarSoldados();
         $this->importarNavesImperio();
         $this->gravarDadosRebeldes();
@@ -41,24 +39,27 @@ class EnvioPlanosController extends Controller{
         $naveRebeldeDao->gravar("Caça estelar X-wing T-65", $countDetroier, 72, 72+15);
         $naveRebeldeDao->gravar("Sombra Furtiva", $countTranspMedio, 48, 48+10);
     }
-
     public function importarNavesImperio(){
-        $file = fopen($_FILES["arq2"]["tmp_name"], "r");
-        $result = array();
-        $i = 0;
-        $navesImperioDao = new NaveImperioDAO();
-        while (!feof($file)){
-            if (substr(($value = utf8_encode(fgets($file))), 0, 5) !== ';;;;;') {
-                $value = str_replace(',','.',$value);
-                $value = explode(";", $value);
-                if($i>0){
-                $naveImperio = new NaveImperio($value[0],$value[1],$value[2],$value[3],$value[4],$value[5]);
-                $navesImperioDao->gravar($naveImperio);
+        if(isset($_FILES)){
+            $file = fopen($_FILES["arq2"]["tmp_name"], "r");
+            $result = array();
+            $i = 0;
+            $navesImperioDao = new NaveImperioDAO();
+            while (!feof($file)){
+                if (substr(($value = utf8_encode(fgets($file))), 0, 5) !== ';;;;;') {
+                    $value = str_replace(',','.',$value);
+                    $value = explode(";", $value);
+                    if($i>0){
+                    $naveImperio = new NaveImperio($value[0],$value[1],$value[2],$value[3],$value[4],$value[5]);
+                    $navesImperioDao->gravar($naveImperio);
+                    }
+                $i++;
                 }
-            $i++;
             }
+            fclose($file);
+        }else{
+            echo "_FILES do php está limitado";
         }
-        fclose($file);
     }
     public function  importarSoldados(){
         $client = new \MongoDB\Client();
