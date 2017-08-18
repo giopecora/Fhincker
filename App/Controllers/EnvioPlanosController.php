@@ -17,9 +17,9 @@ class EnvioPlanosController extends Controller{
     }
     
     public function importar(){
-        //$this->importarSoldados();
-        //$this->importarNavesImperio();
-        //$this->gravarDadosRebeldes();
+        $this->importarSoldados();
+        $this->importarNavesImperio();
+        $this->gravarDadosRebeldes();
         $this->redirect('/dadosPlanos');
     }
 

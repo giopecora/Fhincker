@@ -22,10 +22,10 @@ class App{
         */
        define('APP_HOST'       , $_SERVER['HTTP_HOST'] . "/Fhincker");
        define('PATH'           , realpath('./'));
-       define('TITLE'          , "Primeira aplicação MVC em PHP - DevMedia");
+       define('TITLE'          , "Força");
        define('DB_HOST'        , "localhost");
        define('DB_USER'        , "root");
-       define('DB_PASSWORD'    , "root");
+       define('DB_PASSWORD'    , "");
        define('DB_NAME'        , "rebeldes");
        define('DB_DRIVER'      , "mysql");
        define('MONGO'          , "c:\wamp64\bin\mongo\MongoDB\Server/3.4\bin");

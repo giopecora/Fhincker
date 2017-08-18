@@ -19,11 +19,6 @@
    <p>Fragata classe Lancer a média é: <?php echo $this->tranpMedio->ship_potential;?>%</p>
    <p>Fragata classe Lancer a média é: <?php echo $this->destroier->ship_potential;?>%</p>
 
-   </br>
-   <p>O potencial de vitória dos soldados do imperio são: </p> 
-   <p>Fragata classe Lancer a média é: <?php echo $this->fragata;?>%</p>
-   <p>Fragata classe Lancer a média é: <?php echo $this->gozanti;?>%</p>
-   <p>Fragata classe Lancer a média é: <?php echo $this->tranpMedio->ship_potential;?>%</p>
-   <p>Fragata classe Lancer a média é: <?php echo $this->destroier->ship_potential;?>%</p>
+   
 
  </form>

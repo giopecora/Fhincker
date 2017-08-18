@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\DAO\LoginDAO;
+use App\Lib\Erro;
 use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
 
@@ -13,7 +14,7 @@ class LoginController extends Controller{
     }
     public function validar(){
        // Sessao::gravaFormulario($_POST);
-
+       $_SESSION['mensagemLogin']="";
         $loginDAO = new LoginDAO();
 
         $id = $loginDAO->autentica($_POST['usuario'], $_POST['senha']);
@@ -40,7 +41,8 @@ class LoginController extends Controller{
             $this->redirect('/envioPlanos');
 
         }else{
-            var_dump("false");
+            $_SESSION['mensagemLogin'] = "Login e\ou Senha incorreta";
+            $this->redirect('/Login');
         }
 
         /*if($usuarioDAO->verificaEmail($_POST['email'])){

@@ -1,8 +1,12 @@
 
 .cycle {
   background-image: url(https://vignette3.wikia.nocookie.net/pt.starwars/images/9/9d/Jedi_symbol.svg/revision/latest/scale-to-width-down/350?cb=20091223194914);
-  height: 415px;
-  cursor: move;
+  height: 300px;
+  background-repeat: no-repeat;
+  
+
+  
+  
 }
 .box {
   width: 512px;

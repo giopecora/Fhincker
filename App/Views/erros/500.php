@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="error"><?php echo $varMessage;?></h1>
+        <h1 class="error">SENHA INCORRETA</h1>
     </div>
 </body>
 </html>
